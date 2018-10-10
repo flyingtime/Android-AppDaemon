@@ -38,6 +38,8 @@ public class Daemon {
 		cmdBuilder.append(" -t ");
 		cmdBuilder.append(interval);
 
+		Log.i("Daemon","start, Thread ID: " + Thread.currentThread().getId() + cmdBuilder.toString());
+
 		try {
 			Runtime.getRuntime().exec(cmdBuilder.toString()).waitFor();
 		} catch (IOException | InterruptedException e) {

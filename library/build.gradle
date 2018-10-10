@@ -22,7 +22,7 @@ android {
 }
 
 task ndkBuild(type: Exec) {
-	def ndkDir = project.plugins.findPlugin('com.android.library').sdkHandler.getNdkFolder()
+	def ndkDir = project.android.ndkDirectory
 	commandLine "$ndkDir/ndk-build.cmd", '-C', 'src/main/jni',
 			"NDK_OUT=$buildDir/ndk/obj",
 			"NDK_APP_DST_DIR=$buildDir/ndk/libs/\$(TARGET_ARCH_ABI)"
@@ -33,4 +33,4 @@ task copyExeFile(type: Copy) {
 	into file('src/main/assets/')
 }
 
-apply from: '../maven_push.gradle'
+// apply from: '../maven_push.gradle'
